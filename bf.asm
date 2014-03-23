@@ -46,7 +46,6 @@
 [global START]
 
 START:
-	;mov rbp, rsp
 	mov rbx, [rsp]
 	cmp rbx, 1
 	jle .too_few_args
