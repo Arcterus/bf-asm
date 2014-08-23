@@ -28,11 +28,11 @@
 %elif __OUTPUT_FORMAT__, elf64
 	%define START _start
 
-	%define EXIT_SYS 0x01
-	%define READ_SYS 0x03
-	%define WRITE_SYS 0x04
-	%define OPEN_SYS 0x05
-	%define CLOSE_SYS 0x06
+	%define EXIT_SYS 60
+	%define READ_SYS 0
+	%define WRITE_SYS 1
+	%define OPEN_SYS 2
+	%define CLOSE_SYS 3
 
 	%define SYS_REG rax
 	%define SYS_ARG1 rdi
@@ -66,6 +66,7 @@ START:
 .exit:
 	mov SYS_REG, EXIT_SYS
 	syscall
+
 .too_few_args:
 	mov SYS_REG, WRITE_SYS
 	mov SYS_ARG1, 2
